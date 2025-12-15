@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Practice - Variables and Lists</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pyodide/0.24.1/pyodide.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .exercise {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .exercise h3 {
+            color: #2d3748;
+            margin-top: 0;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px 5px 0 0;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .output {
+            background: #1a202c;
+            color: #68d391;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            margin-top: 15px;
+            min-height: 40px;
+            border: 2px solid #2d3748;
+        }
+        
+        .error {
+            color: #fc8181;
+        }
+        
+        .success {
+            color: #68d391;
+        }
+        
+        .loading {
+            color: #63b3ed;
+            font-style: italic;
+        }
+        
+        .hint {
+            background: #fff5b7;
+            border: 1px solid #f6e05e;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .solution {
+            background: #e6fffa;
+            border: 1px solid #38b2ac;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .solution code {
+            background: #2d3748;
+            color: #68d391;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐍 Python Practice Lab</h1>
+        
+        <div class="exercise">
+            <h3>Exercise 1: Variables and Basic Operations</h3>
+            <p>Create variables for your name and age, then print a message introducing yourself.</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use quotes for strings and no quotes for numbers. Try using f-strings for formatting!
+            </div>
+            <textarea id="code1" placeholder="# Write your code here
+name = 'Your Name'
+age = 25
+print(f'Hello, my name is {name} and I am {age} years old.')"></textarea>
+            <button onclick="runCode('code1', 'output1')">Run Code</button>
+            <button onclick="showHint(1)">Show Hint</button>
+            <button onclick="toggleSolution(1)">Show/Hide Solution</button>
+            <div id="output1" class="output"></div>
+            <div id="solution1" class="solution">
+                <strong>Sample Solution:</strong><br>
+                <code>name = "Alice"<br>age = 20<br>print(f"Hello, my name is {name} and I am {age} years old.")</code>
+            </div>
+        </div>
+        
+        <div class="exercise">
+            <h3>Exercise 2: Lists and Loops</h3>
+            <p>Create a list of your favorite colors and print each color with its position in the list.</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use enumerate() to get both index and value, or use range(len(list))
+            </div>
+            <textarea id="code2" placeholder="# Write your code here
+colors = ['red', 'blue', 'green']
+for i, color in enumerate(colors, 1):
+    print(f'{i}. {color}')"></textarea>
+            <button onclick="runCode('code2', 'output2')">Run Code</button>
+            <button onclick="showHint(2)">Show Hint</button>
+            <button onclick="toggleSolution(2)">Show/Hide Solution</button>
+            <div id="output2" class="output"></div>
+            <div id="solution2" class="solution">
+                <strong>Sample Solution:</strong><br>
+                <code>colors = ["red", "blue", "green", "purple"]<br>for i, color in enumerate(colors, 1):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f"{i}. {color}")</code>
+            </div>
+        </div>
+        
+        <div class="exercise">
+            <h3>Exercise 3: Functions</h3>
+            <p>Write a function that takes a list of numbers and returns the sum of all even numbers in the list.</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use the modulo operator (%) to check if a number is even. number % 2 == 0 means it's even!
+            </div>
+            <textarea id="code3" placeholder="# Write your code here
+def sum_even_numbers(numbers):
+    total = 0
+    for num in numbers:
+        if num % 2 == 0:
+            total += num
+    return total
+
+# Test your function
+test_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+result = sum_even_numbers(test_numbers)
+print(f'Sum of even numbers: {result}')"></textarea>
+            <button onclick="runCode('code3', 'output3')">Run Code</button>
+            <button onclick="showHint(3)">Show Hint</button>
+            <button onclick="toggleSolution(3)">Show/Hide Solution</button>
+            <div id="output3" class="output"></div>
+            <div id="solution3" class="solution">
+                <strong>Sample Solution:</strong><br>
+                <code>def sum_even_numbers(numbers):<br>&nbsp;&nbsp;&nbsp;&nbsp;return sum(num for num in numbers if num % 2 == 0)<br><br># Or the longer version:<br>def sum_even_numbers(numbers):<br>&nbsp;&nbsp;&nbsp;&nbsp;total = 0<br>&nbsp;&nbsp;&nbsp;&nbsp;for num in numbers:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if num % 2 == 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total += num<br>&nbsp;&nbsp;&nbsp;&nbsp;return total</code>
+            </div>
+        </div>
+        
+        <div class="exercise">
+            <h3>Exercise 4: Challenge - Word Counter</h3>
+            <p>Write a program that counts how many times each word appears in a sentence.</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use split() to break the sentence into words, and a dictionary to count occurrences.
+            </div>
+            <textarea id="code4" placeholder="# Write your code here
+sentence = 'the quick brown fox jumps over the lazy dog the fox is quick'
+# Your code here"></textarea>
+            <button onclick="runCode('code4', 'output4')">Run Code</button>
+            <button onclick="showHint(4)">Show Hint</button>
+            <button onclick="toggleSolution(4)">Show/Hide Solution</button>
+            <div id="output4" class="output"></div>
+            <div id="solution4" class="solution">
+                <strong>Sample Solution:</strong><br>
+                <code>sentence = "the quick brown fox jumps over the lazy dog the fox is quick"<br>words = sentence.split()<br>word_count = {}<br>for word in words:<br>&nbsp;&nbsp;&nbsp;&nbsp;word_count[word] = word_count.get(word, 0) + 1<br><br>for word, count in word_count.items():<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f"'{word}': {count}")</code>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let pyodide;
+        
+        async function initPyodide() {
+            pyodide = await loadPyodide();
+            console.log("Pyodide loaded successfully");
+        }
+        
+        async function runCode(textareaId, outputId) {
+            const code = document.getElementById(textareaId).value;
+            const output = document.getElementById(outputId);
+            
+            if (!pyodide) {
+                output.innerHTML = '<span class="loading">Loading Python environment...</span>';
+                await initPyodide();
+            }
+            
+            output.innerHTML = '<span class="loading">Running code...</span>';
+            
+            try {
+                // Capture stdout
+                pyodide.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+                `);
+                
+                // Run user code
+                pyodide.runPython(code);
+                
+                // Get output
+                const stdout = pyodide.runPython("sys.stdout.getvalue()");
+                
+                // Reset stdout
+                pyodide.runPython("sys.stdout = sys.__stdout__");
+                
+                if (stdout.trim()) {
+                    output.innerHTML = `<span class="success">Output:</span>\n${stdout}`;
+                } else {
+                    output.innerHTML = '<span class="success">Code executed successfully (no output)</span>';
+                }
+            } catch (error) {
+                output.innerHTML = `<span class="error">Error:</span>\n${error.message}`;
+            }
+        }
+        
+        function showHint(exerciseNum) {
+            const hints = {
+                1: "Remember: strings need quotes, numbers don't. Use f-strings: f'Hello {variable}'",
+                2: "Try: for i, item in enumerate(my_list, 1): to start counting from 1",
+                3: "Use num % 2 == 0 to check if a number is even. Build up your total in a loop!",
+                4: "Use sentence.split() to get a list of words, then loop through and count with a dictionary"
+            };
+            alert(hints[exerciseNum]);
+        }
+        
+        function toggleSolution(exerciseNum) {
+            const solution = document.getElementById(`solution${exerciseNum}`);
+            solution.style.display = solution.style.display === 'none' || solution.style.display === '' ? 'block' : 'none';
+        }
+        
+        //Initialise Pyodide when page loads
+        window.addEventListener('load', initPyodide);
+    </script>
+</body>
+</html>
